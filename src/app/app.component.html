@@ -1,0 +1,81 @@
+<div class="container-fluid">
+  <nav class="navbar navbar-expand navbar-light bg-primary d-flex justify-content-between">
+    <div class="navbar-brand mb-0 h1 text-white">Lab Record DIY Battery</div>
+  </nav>
+
+  <div class="row">
+
+    <div class="col-sm-4" style="background-color:lightgrey;">
+
+      <div class="thumbnail" style="padding: 5px; background-color: lightgrey;">
+        <a href="#" target="_blank">
+          <div class="caption" >
+            <p>TAC Image</p>
+          </div>
+          <input type="file" class="form-control-file" (change)="fileChanged($event)">
+         <img *ngIf="record.recordPic" [src]="record.recordPic" class="img-thumbnail" style="width: 300px; height: 300px;">
+        </a>
+      </div>
+    <button mat-raised-button color="primary" (click)="openDialog()">Crop Image</button><br><br>
+    </div>
+
+    <div class="col-sm-8" style="background-color:lightgrey; ">
+
+      <form #recordForm="ngForm">
+
+        <div class="form-group row">
+
+          <div class="col-xs-8">  
+            <label id="email">Aim:</label>
+            <input type="text" class="form-control" [(ngModel)]="record.aim" name="aim" placeholder="Aim" #Aim="ngModel" required [ngClass]="{'is-invalid': Aim.invalid && (Aim.touched || recordForm.submitted) }">
+          </div>
+
+          <div class="col-xs-4">
+            <label id="pwd">Date:</label>
+            <input type="date" class="form-control" id="dt" placeholder=" " name="dt">
+          </div>
+        </div>
+
+       <div class="form-group row ">
+          <div class="col-xs-7">
+            <label id="the">Theory:</label>
+            <textarea class="form-control" [(ngModel)]="record.theory" name="address" rows="4" placeholder="Theory" #Theory="ngModel" required [ngClass]="{'is-invalid': Theory.invalid && (Theory.touched || recordForm.submitted) }"></textarea>
+          </div>
+
+          <div class="col-xs-5">
+            <label id="mat">Material Required:</label>
+            <textarea class="form-control" [(ngModel)]="record.material" name="material" rows="3"
+             placeholder="Material" #Material="ngModel" required [ngClass]="{'is-invalid': Material.invalid && (Material.touched || recordForm.submitted) }"></textarea>        
+          </div>
+        </div>
+
+        <div class="form-group row ">
+          <div class="col-xs-7">
+            <label id="pro">Procedure:</label>
+            <textarea class="form-control" [(ngModel)]="record.procedure" name="procedure" rows="3"
+              placeholder="Procedure" #Procedure="ngModel" required [ngClass]="{'is-invalid': Procedure.invalid && (Procedure.touched || recordForm.submitted) }"></textarea> 
+          </div>
+          <div class="col-xs-5">
+            <label id="dis">Calculation and Discussion:</label>
+            <textarea class="form-control" [(ngModel)]="record.calculation" name="calculation" rows="3" placeholder="Calculation" #Calculation="ngModel" required [ngClass]="{'is-invalid': Calculation.invalid && (Calculation.touched || recordForm.submitted) }"></textarea> 
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-xs-7">
+            <label id="ana">Analysis:</label>
+            <textarea rows="3" cols="20" class="form-control" [(ngModel)]="record.analysis" name="analysis" rows="3" placeholder="Analysis" #Analysis="ngModel" required [ngClass]="{'is-invalid': Analysis.invalid && (Analysis.touched || recordForm.submitted) }"></textarea>
+          </div>
+        </div><br>
+
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default" (click)="recordForm.valid ? generatePdf('open') : ''">Open PDF</button>
+            <button class="btn btn-default" (click)="recordForm.valid ? generatePdf('open') : ''">Download PDF</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
