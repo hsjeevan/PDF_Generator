@@ -19,5 +19,4 @@ export class ImageCropperComponent implements OnInit {
  onClose(){
  	this.dialogRef.close();
  }
-
 }

@@ -1,12 +1,9 @@
-
 import { Component } from '@angular/core';
 import { Record } from './record';
 import { ScriptService } from './script.service';
 declare let pdfMake: any ;
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
-
-
 
 @Component({
   selector: 'app-root',

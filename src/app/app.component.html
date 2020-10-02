@@ -12,16 +12,18 @@
           <div class="caption" >
             <p>TAC Image</p>
           </div>
-        <img *ngIf="image" [src]="image" class="img-thumbnail" width="600px" height="400px">
+        <img *ngIf="image" [src]="image" class="img-thumbnail" style="width: 500px; height: 400px;">
         </a>
       </div>
     <button mat-raised-button color="primary" (click)="openDialog()">Crop Image</button><br><br>
     </div>
-<!--<h1>Hi!{{name}}</h1>-->
-<!--<img *ngIf="image" [src]="image" width="600px" height="400px">-->
+
     <div class="col-sm-8" style="background-color:lightgrey; ">
+
       <form #recordForm="ngForm">
+
         <div class="form-group row">
+
           <div class="col-xs-8">  
             <label id="email">Aim:</label>
             <input type="text" class="form-control" [(ngModel)]="record.aim" name="aim" placeholder="Aim" #Aim="ngModel" required [ngClass]="{'is-invalid': Aim.invalid && (Aim.touched || recordForm.submitted) }">
