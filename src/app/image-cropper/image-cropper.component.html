@@ -1,4 +1,8 @@
-<p>image-cropper works!</p>
-<button mat-button mat-dialog-close> Cancel </button>
 
-<p>Image cropper works</p>
+
+<!--<input type="file" class="form-control-file" (change)="fileChanged($event)" [(ngModel)]="image">-->
+<img [src]="data.image">
+<button class="btn btn-primary" >Crop Image</button>
+<button class="btn btn-primary">Reset</button>
+<button mat-button [mat-dialog-close]="data.image"> Save </button>
+
