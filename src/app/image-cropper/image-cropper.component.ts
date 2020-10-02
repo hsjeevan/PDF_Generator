@@ -13,7 +13,6 @@ import { Record } from '../record';
 export class ImageCropperComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<ImageCropperComponent>, @Inject(MAT_DIALOG_DATA) public data:any) {	 }
-
   ngOnInit(): void {}
  
  onClose(){
