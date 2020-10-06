@@ -1,5 +1,25 @@
 <!--<input type="file" class="form-control-file" (change)="fileChanged($event)" [(ngModel)]="image">-->
-<img [src]="data.image">
-<button class="btn btn-primary" >Crop Image</button>
-<button class="btn btn-primary">Reset</button>
-<button mat-button [mat-dialog-close]="data.image"> Save </button>
+<!--<img [src]="data.image1">-->
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <div class="row">
+                <button class="btn btn-primary" (click)="prevPage()">Previous</button>
+                <button class="btn btn-primary" (click)="nextPage()">Next</button>
+                <button  class="btn btn-primary" mat-button (click)="onClose()"> Cancel</button>
+
+            </div>
+        </div>
+        <div class="card-body">
+            <app-pdf-cropper [src]="result"></app-pdf-cropper>
+        </div>
+    </div>
+</div>
+
+
+<!--<button class="btn btn-primary" >Crop Image</button>
+<button class="btn btn-primary">Reset</button>-->
+
+
+

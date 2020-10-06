@@ -10,7 +10,7 @@
           <div class="caption" >
             <p>TAC Image</p>
           </div>
-        <img *ngIf="image" [src]="image" class="img-thumbnail" style="width: 500px; height: 400px;">
+        <img *ngIf="imageDestination" [src]="imageDestination" class="img-thumbnail" style="width: 500px; height: 400px;" [(ngModel)]="imageDestination">
         </a>
       </div>
     <button mat-raised-button color="primary" (click)="openDialog()">Crop Image</button><br><br>
@@ -34,7 +34,7 @@
        <div class="form-group row ">
           <div class="col-xs-7">
             <label id="the">Theory:</label>
-            <textarea class="form-control" [(ngModel)]="record.theory" name="address" rows="4" placeholder="Theory" #Theory="ngModel" required [ngClass]="{'is-invalid': Theory.invalid && (Theory.touched || recordForm.submitted) }"></textarea>
+            <textarea class="form-control" [(ngModel)]="record.theory" name="address" rows="3" placeholder="Theory" #Theory="ngModel" required [ngClass]="{'is-invalid': Theory.invalid && (Theory.touched || recordForm.submitted) }"></textarea>
           </div>
 
           <div class="col-xs-5">

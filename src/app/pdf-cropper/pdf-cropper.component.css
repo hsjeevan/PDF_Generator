@@ -1,0 +1,15 @@
+.img-container {
+    width: auto;
+    height: auto;
+    float: left;
+}
+
+.img-preview {
+    width: 600px;
+    height: 600px;
+    float: left;
+    margin-left: 10px;
+}
+.btn-primary{
+    margin-right:10px;
+}
