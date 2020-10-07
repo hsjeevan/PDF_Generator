@@ -1,12 +1,12 @@
 <div class="row">
-	<button  class="btn btn-primary" mat-button [mat-dialog-close]="imageDestination"> Save image</button>
-	<button class="btn btn-primary" (click)="getCropper()">Crop Image</button>
-	<button class="btn btn-primary" (click)="resetCropper()">Reset</button>
+	<button  class="btn btn-primary" mat-button [mat-dialog-close]="imageDestination2"> Save image</button>
+	<button class="btn btn-primary" (click)="getCropper2()">Crop Image</button>
+	<button class="btn btn-primary" (click)="resetCropper2()">Reset</button>
 </div>
 
 <div class="img-container">
-    <img #image [src]="imageSource" crossorigin>
+    <img #image [src]="imageSource2" crossorigin>
 </div>
 <div class="img-preview">
-   	<img [src]="imageDestination">
+   	<img [src]="imageDestination2">
 </div>

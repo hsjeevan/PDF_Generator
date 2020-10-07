@@ -8,13 +8,15 @@
   import { ImageCropperComponent } from './image-cropper/image-cropper.component';
   import { MaterialModule } from "./material/material.module";
 import { PdfCropperComponent } from './pdf-cropper/pdf-cropper.component';
+import { CropImageComponent } from './crop-image/crop-image.component';
 
 
   @NgModule({
     declarations: [
       AppComponent,
       ImageCropperComponent,
-      PdfCropperComponent
+      PdfCropperComponent,
+      CropImageComponent
     ],
     imports: [
       BrowserModule,

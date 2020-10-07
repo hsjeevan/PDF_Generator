@@ -4,6 +4,7 @@ import { ScriptService } from './script.service';
 declare let pdfMake: any ;
 import { ImageCropperComponent } from './image-cropper/image-cropper.component';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
+import { CropImageComponent } from './crop-image/crop-image.component';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +12,13 @@ import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from "@angu
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  //name:string;
-   image1:string;
+   imgURL: string;
+   pdfURL: string;
   data: any;
   record = new Record();
  imageDestination: string;
+ imageDestination2: string;
+ result1:any
 
   constructor(public dialog: MatDialog, private scriptService: ScriptService) {
     this.record = JSON.parse(sessionStorage.getItem('record')) || new Record();
@@ -24,6 +27,11 @@ export class AppComponent {
     this.scriptService.load('pdfMake', 'vfsFonts');
 
     this.data={};
+  }
+
+    ngOnInit() {
+        this.imgURL = "assets/sample.png";
+        this.pdfURL = "assets/download.jpg";
   }
 
   generatePdf(action = 'open') {
@@ -42,10 +50,17 @@ export class AppComponent {
           content:[
                       { 
                           columns: [
-                                      {image:this.imageDestination,
-                                        width:200,
-                                        height:400},
-                                      
+                                          [ 'TAC image',
+                                              {image:this.imageDestination,
+                                                width:200,
+                                                height:200,
+                                            },
+                                            'Observation Table',
+                                            {image:this.imageDestination2,
+                                                width:200,
+                                                height:200,
+                                            }],
+                                           
                                       {
                                           table: {
                                           
@@ -104,62 +119,41 @@ export class AppComponent {
                                                  ]
                                                   }
                                       }
+                                       
                                     ],
                                     columnGap:20
-                      },
+                      }
 
                   ]   
             };
   }
 
-  getRecordPicObject() {
-    if (this.imageDestination) {
-      return {
-        image: this.imageDestination ,
-        width: 200,
-        height:400,
-        alignment : 'left'
-      };
-    }
-    return null;
-  }
-  fileChanged(e) {
-    const file = e.target.files[0];
-    this.getBase64(file);
-  }
-  getBase64(file) {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => {
-      console.log(reader.result);
-      this.image1 = reader.result as string;
-    };
-    reader.onerror = (error) => {
-      console.log('Error: ', error);
-    };
-
-  }
+  
 
 openDialog(){
 const dialogRef = this.dialog.open(ImageCropperComponent, {
       width: '1200px',
       height:'500px',
-      data:{   imageDestination:this.imageDestination
+      data:{imageDestination2:this.imageDestination2
+            }   
+    });
+    dialogRef.afterClosed().subscribe(result1 => {
+      console.log('The dialog was closed');
+      this.imageDestination2 = result1;
+    });
 }
-      
+
+openModal(){
+const dialogRef = this.dialog.open(CropImageComponent, {
+      width: '1200px',
+      height:'500px',
+      data:{imageDestination:this.imageDestination
+            }   
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       this.imageDestination = result;
     });
-  
- //  const dialogConfig= new MatDialogConfig();
- //  dialogConfig.disableClose=true;
- //  dialogConfig.autoFocus=true;
- //  dialogConfig.width="100%";  
- //  dialogConfig.height="50%";
-  //  this.dialog.open(ImageCropperComponent, dialogConfig);
-
 }
 
 }

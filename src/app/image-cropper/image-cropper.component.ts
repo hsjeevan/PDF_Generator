@@ -53,7 +53,7 @@ export class ImageCropperComponent implements OnInit {
 @ViewChild('holder', { static: true }) holder: ElementRef;
   @ViewChild('canvas', { static: true }) canvas: ElementRef<HTMLCanvasElement>;
   pdfurl = 'assets/demo.pdf';
-  result: any;
+  result1: any;
   imgURL: string;
   page_num: number = 0;
   pdfDoc: any;
@@ -123,9 +123,8 @@ export class ImageCropperComponent implements OnInit {
     wrapper.appendChild(canvas)
     //this.holder.nativeElement.appendChild(wrapper);
     page.render(renderContext).promise.then(() => {
-      this.result = canvas.toDataURL('image/jpeg');
+      this.result1 = canvas.toDataURL('image/jpeg');
     });
-
 
   }
  

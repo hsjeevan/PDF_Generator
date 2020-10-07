@@ -10,10 +10,21 @@
           <div class="caption" >
             <p>TAC Image</p>
           </div>
-        <img *ngIf="imageDestination" [src]="imageDestination" class="img-thumbnail" style="width: 500px; height: 400px;" [(ngModel)]="imageDestination">
+        <img [src]="imageDestination?imageDestination:imgURL" class="img-thumbnail" style="width: 300px; height: 300px;" [(ngModel)]="imageDestination">
+        </a>
+      </div>
+      <button mat-raised-button color="primary" (click)="openModal()">Crop Image</button><br><br>
+
+    <div class="thumbnail" style="padding: 5px; background-color: lightgrey;">
+        <a href="#" target="_blank">
+          <div class="caption" >
+            <p>Observation Sheet</p>
+          </div>
+        <img [src]="imageDestination2?imageDestination2:pdfURL" class="img-thumbnail" style="width: 300px; height: 300px;" [(ngModel)]="imageDestination2">
         </a>
       </div>
     <button mat-raised-button color="primary" (click)="openDialog()">Crop Image</button><br><br>
+
     </div>
 
     <div class="col-sm-8" style="background-color:lightgrey; ">

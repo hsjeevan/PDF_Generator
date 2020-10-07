@@ -1,0 +1,18 @@
+
+<div class="container">
+   <div class="card">
+		<div class="card-header">
+			<button  class="btn btn-primary" mat-button [mat-dialog-close]="imageDestination"> Save image</button>
+			<button class="btn btn-primary" (click)="getCropper()">Crop Image</button>
+			<button class="btn btn-primary" (click)="resetCropper()">Reset</button>
+		</div>
+		<div class="card-body">
+			<div class="img-container">
+    			<img #image [src]="imageSource" crossorigin>
+			</div>
+			<div class="img-preview">
+   				<img [src]="imageDestination">
+			</div>
+		</div>
+	</div>
+</div>
